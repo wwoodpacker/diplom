@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "processtable.h"
+#include "accsess_dialog.h"
 
 #include <QFile>
 #include <QString>
@@ -48,12 +49,28 @@ MainWindow::~MainWindow()
 
 }
 
+//dialog const and destruct
+Dialog::Dialog(QWidget *parent) :
+QWidget(parent),
+dialog_ui(new Ui::Dialog)
+{
+dialog_ui->setupUi();
+}
+
+
+Dialog::~Dialog()
+{
+    delete dialog_ui;
+
+}
+//popup menu
 void MainWindow::onCustomContextMenu(const QPoint &point)
 {
     //QDir dir("");
     QModelIndex index = Treelist->indexAt(point);
     if (index.isValid()) {
-
+        Dialog *dial = new Dialog;
+        dial->show();
         QDirModel *model2 = new QDirModel;
         QFileInfo fileInfo = model2->fileInfo(index);
         QString filePath = fileInfo.filePath();
@@ -64,6 +81,8 @@ void MainWindow::onCustomContextMenu(const QPoint &point)
     // contextMenu->exec(Treelist->mapToGlobal(point));
     }
 }
+
+//Ma
 void MainWindow::MainItemsAction(QListWidgetItem *item)
 {
 
