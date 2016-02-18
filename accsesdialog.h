@@ -15,8 +15,12 @@ public:
     explicit AccsesDialog(QWidget *parent = 0);
     ~AccsesDialog();
 
+public slots:
+    void changeAccses();
+
 private:
     Ui::AccsesDialog *ui;
+
 };
 
 #endif // ACCSESDIALOG_H

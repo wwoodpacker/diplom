@@ -55,6 +55,7 @@ AccsesDialog::AccsesDialog(QWidget *parent) :
     ui(new Ui::AccsesDialog)
 {
     ui->setupUi(this);
+    connect(ui->pushButton,SIGNAL(clicked(bool)),this,SLOT(changeAccses()));
 }
 
 AccsesDialog::~AccsesDialog()
@@ -62,6 +63,11 @@ AccsesDialog::~AccsesDialog()
     delete ui;
 }
 
+//slot
+void AccsesDialog::changeAccses()
+{
+  QMessageBox::information(this,"jur","helloozalypa",QMessageBox::Ok, 0 );
+}
 //popup menu
 void MainWindow::onCustomContextMenu(const QPoint &point)
 {
@@ -76,7 +82,7 @@ void MainWindow::onCustomContextMenu(const QPoint &point)
         QFileInfo fileInfo = model2->fileInfo(index);
         QString filePath = fileInfo.filePath();
 
-        QMessageBox::information(this,"jur",filePath,QMessageBox::Ok, 0 );
+       // QMessageBox::information(this,"jur",filePath,QMessageBox::Ok, 0 );
         QMenu *menu=new QMenu;
           menu->exec(Treelist->mapToGlobal(point));
     // contextMenu->exec(Treelist->mapToGlobal(point));
