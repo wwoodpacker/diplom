@@ -26,7 +26,7 @@ private:
     QDirModel *model ;
     QTreeView *Treelist;
 public slots:
-    void myItemAction(QListWidgetItem *item);
+    void MainItemsAction(QListWidgetItem *item);
     void onCustomContextMenu(const QPoint &point);
 };
 

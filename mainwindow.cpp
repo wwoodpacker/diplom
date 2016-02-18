@@ -11,6 +11,7 @@
 #include <QTreeView>
 #include <QTreeWidget>
 #include <QSplitter>
+#include <QMenu>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -38,7 +39,7 @@ MainWindow::MainWindow(QWidget *parent) :
     QLabel *temp_lable =new QLabel;
     temp_lable->setText("<----- Choose item");
     ui->gridLayout->addWidget(temp_lable);
-    connect(ui->list_operation,SIGNAL(itemClicked(QListWidgetItem*)),this,SLOT(myItemAction(QListWidgetItem*)));
+    connect(ui->list_operation,SIGNAL(itemClicked(QListWidgetItem*)),this,SLOT(MainItemsAction(QListWidgetItem*)));
 }
 
 MainWindow::~MainWindow()
@@ -49,13 +50,21 @@ MainWindow::~MainWindow()
 
 void MainWindow::onCustomContextMenu(const QPoint &point)
 {
+    //QDir dir("");
     QModelIndex index = Treelist->indexAt(point);
     if (index.isValid()) {
 
-    //  contextMenu->exec(Treelist->mapToGlobal(point));
+        QDirModel *model2 = new QDirModel;
+        QFileInfo fileInfo = model2->fileInfo(index);
+        QString filePath = fileInfo.filePath();
+
+        QMessageBox::information(this,"jur",filePath,QMessageBox::Ok, 0 );
+        QMenu *menu=new QMenu;
+          menu->exec(Treelist->mapToGlobal(point));
+    // contextMenu->exec(Treelist->mapToGlobal(point));
     }
 }
-void MainWindow::myItemAction(QListWidgetItem *item)
+void MainWindow::MainItemsAction(QListWidgetItem *item)
 {
 
     ProcessTable* pt= new ProcessTable;
@@ -105,13 +114,14 @@ void MainWindow::myItemAction(QListWidgetItem *item)
          splitter = new QSplitter;
          model = new QDirModel;
          Treelist = new QTreeView(splitter);
-             Treelist->setModel(model);
+         Treelist->setModel(model);
+
             // list->setRootIndex(model->index(QDir::currentPath()));
              //splitter->setWindowTitle("Two views onto the same directory model");
                 // splitter->show();
-           ui->gridLayout->addWidget(Treelist);
-           Treelist->setContextMenuPolicy(Qt::CustomContextMenu);
-           connect(Treelist, SIGNAL(customContextMenuRequested(const QPoint &)), this, SLOT(onCustomContextMenu(const QPoint &)));
+         ui->gridLayout->addWidget(Treelist);
+         Treelist->setContextMenuPolicy(Qt::CustomContextMenu);
+         connect(Treelist, SIGNAL(customContextMenuRequested(const QPoint &)), this, SLOT(onCustomContextMenu(const QPoint &)));
 
     }
     else
