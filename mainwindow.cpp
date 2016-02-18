@@ -1,7 +1,8 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "processtable.h"
-#include "accsess_dialog.h"
+#include "accsesdialog.h"
+#include "ui_accsesdialog.h"
 
 #include <QFile>
 #include <QString>
@@ -48,29 +49,29 @@ MainWindow::~MainWindow()
     delete ui;
 
 }
-
-//dialog const and destruct
-Dialog::Dialog(QWidget *parent) :
-QWidget(parent),
-dialog_ui(new Ui::Dialog)
+//accses dialog constr and destr
+AccsesDialog::AccsesDialog(QWidget *parent) :
+    QWidget(parent),
+    ui(new Ui::AccsesDialog)
 {
-dialog_ui->setupUi();
+    ui->setupUi(this);
 }
 
-
-Dialog::~Dialog()
+AccsesDialog::~AccsesDialog()
 {
-    delete dialog_ui;
-
+    delete ui;
 }
+
 //popup menu
 void MainWindow::onCustomContextMenu(const QPoint &point)
 {
     //QDir dir("");
+    AccsesDialog *dial = new AccsesDialog;
+    dial->show();
+
     QModelIndex index = Treelist->indexAt(point);
     if (index.isValid()) {
-        Dialog *dial = new Dialog;
-        dial->show();
+
         QDirModel *model2 = new QDirModel;
         QFileInfo fileInfo = model2->fileInfo(index);
         QString filePath = fileInfo.filePath();

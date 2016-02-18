@@ -18,7 +18,7 @@ SOURCES += main.cpp\
 
 HEADERS  += mainwindow.h \
     processtable.h \
-    accsess_dialog.h
+    accsesdialog.h
 
 FORMS    += mainwindow.ui \
-    accsess_dialog.ui
+    accsesdialog.ui
