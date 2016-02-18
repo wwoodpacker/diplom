@@ -29,7 +29,7 @@
     <attribute name="title">
      <string>Chmod</string>
     </attribute>
-    <widget class="QGroupBox" name="groupBox">
+    <widget class="QGroupBox" name="groupOwner">
      <property name="geometry">
       <rect>
        <x>10</x>
@@ -132,211 +132,8 @@
        <string>Виконання</string>
       </property>
      </widget>
-     <widget class="QCheckBox" name="checkBox_8">
-      <property name="geometry">
-       <rect>
-        <x>140</x>
-        <y>100</y>
-        <width>85</width>
-        <height>20</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Зап.Вик.</string>
-      </property>
-     </widget>
-     <widget class="QCheckBox" name="checkBox_9">
-      <property name="geometry">
-       <rect>
-        <x>140</x>
-        <y>80</y>
-        <width>85</width>
-        <height>20</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Читання</string>
-      </property>
-     </widget>
-     <widget class="QCheckBox" name="checkBox_10">
-      <property name="geometry">
-       <rect>
-        <x>140</x>
-        <y>60</y>
-        <width>85</width>
-        <height>20</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Чит.Вик.</string>
-      </property>
-     </widget>
-     <widget class="QCheckBox" name="checkBox_11">
-      <property name="geometry">
-       <rect>
-        <x>140</x>
-        <y>40</y>
-        <width>85</width>
-        <height>20</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Чит.Зап.</string>
-      </property>
-     </widget>
-     <widget class="QCheckBox" name="checkBox_12">
-      <property name="geometry">
-       <rect>
-        <x>140</x>
-        <y>120</y>
-        <width>90</width>
-        <height>20</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Виконання</string>
-      </property>
-     </widget>
-     <widget class="QCheckBox" name="checkBox_13">
-      <property name="geometry">
-       <rect>
-        <x>140</x>
-        <y>140</y>
-        <width>90</width>
-        <height>20</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Виконання</string>
-      </property>
-     </widget>
-     <widget class="QCheckBox" name="checkBox_14">
-      <property name="geometry">
-       <rect>
-        <x>140</x>
-        <y>20</y>
-        <width>100</width>
-        <height>20</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Чит.Зап.Вик</string>
-      </property>
-     </widget>
-     <widget class="QCheckBox" name="checkBox_15">
-      <property name="geometry">
-       <rect>
-        <x>120</x>
-        <y>140</y>
-        <width>85</width>
-        <height>20</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Зап.Вик.</string>
-      </property>
-     </widget>
-     <widget class="QCheckBox" name="checkBox_16">
-      <property name="geometry">
-       <rect>
-        <x>120</x>
-        <y>120</y>
-        <width>85</width>
-        <height>20</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Читання</string>
-      </property>
-     </widget>
-     <widget class="QCheckBox" name="checkBox_17">
-      <property name="geometry">
-       <rect>
-        <x>120</x>
-        <y>100</y>
-        <width>85</width>
-        <height>20</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Чит.Вик.</string>
-      </property>
-     </widget>
-     <widget class="QCheckBox" name="checkBox_18">
-      <property name="geometry">
-       <rect>
-        <x>120</x>
-        <y>80</y>
-        <width>85</width>
-        <height>20</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Чит.Зап.</string>
-      </property>
-     </widget>
-     <widget class="QCheckBox" name="checkBox_19">
-      <property name="geometry">
-       <rect>
-        <x>120</x>
-        <y>160</y>
-        <width>90</width>
-        <height>20</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Запис</string>
-      </property>
-     </widget>
-     <widget class="QCheckBox" name="checkBox_20">
-      <property name="geometry">
-       <rect>
-        <x>120</x>
-        <y>180</y>
-        <width>90</width>
-        <height>20</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Виконання</string>
-      </property>
-     </widget>
-     <widget class="QCheckBox" name="checkBox_21">
-      <property name="geometry">
-       <rect>
-        <x>120</x>
-        <y>60</y>
-        <width>100</width>
-        <height>20</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Чит.Зап.Вик</string>
-      </property>
-     </widget>
-     <zorder>radioButton</zorder>
-     <zorder>radioButton_2</zorder>
-     <zorder>radioButton_3</zorder>
-     <zorder>radioButton_4</zorder>
-     <zorder>radioButton_5</zorder>
-     <zorder>radioButton_6</zorder>
-     <zorder>radioButton_7</zorder>
-     <zorder>checkBox_8</zorder>
-     <zorder>checkBox_9</zorder>
-     <zorder>checkBox_10</zorder>
-     <zorder>checkBox_11</zorder>
-     <zorder>checkBox_12</zorder>
-     <zorder>checkBox_13</zorder>
-     <zorder>checkBox_14</zorder>
-     <zorder>checkBox_16</zorder>
-     <zorder>checkBox_15</zorder>
-     <zorder>checkBox_17</zorder>
-     <zorder>checkBox_18</zorder>
-     <zorder>checkBox_19</zorder>
-     <zorder>checkBox_20</zorder>
-     <zorder>checkBox_21</zorder>
     </widget>
-    <widget class="QGroupBox" name="groupBox_2">
+    <widget class="QGroupBox" name="groupGroup">
      <property name="geometry">
       <rect>
        <x>130</x>
@@ -348,7 +145,7 @@
      <property name="title">
       <string>Групи</string>
      </property>
-     <widget class="QRadioButton" name="radioButton_22">
+     <widget class="QRadioButton" name="radioButton_8">
       <property name="geometry">
        <rect>
         <x>10</x>
@@ -361,7 +158,7 @@
        <string>Чит.Зап.Вик</string>
       </property>
      </widget>
-     <widget class="QRadioButton" name="radioButton_23">
+     <widget class="QRadioButton" name="radioButton_9">
       <property name="geometry">
        <rect>
         <x>10</x>
@@ -374,7 +171,7 @@
        <string>Чит.Зап.</string>
       </property>
      </widget>
-     <widget class="QRadioButton" name="radioButton_24">
+     <widget class="QRadioButton" name="radioButton_10">
       <property name="geometry">
        <rect>
         <x>10</x>
@@ -387,7 +184,7 @@
        <string>Чит.Вик.</string>
       </property>
      </widget>
-     <widget class="QRadioButton" name="radioButton_25">
+     <widget class="QRadioButton" name="radioButton_11">
       <property name="geometry">
        <rect>
         <x>10</x>
@@ -400,7 +197,7 @@
        <string>Читання</string>
       </property>
      </widget>
-     <widget class="QRadioButton" name="radioButton_26">
+     <widget class="QRadioButton" name="radioButton_12">
       <property name="geometry">
        <rect>
         <x>10</x>
@@ -413,7 +210,7 @@
        <string>Зап.Вик.</string>
       </property>
      </widget>
-     <widget class="QRadioButton" name="radioButton_27">
+     <widget class="QRadioButton" name="radioButton_13">
       <property name="geometry">
        <rect>
         <x>10</x>
@@ -426,7 +223,7 @@
        <string>Запис</string>
       </property>
      </widget>
-     <widget class="QRadioButton" name="radioButton_28">
+     <widget class="QRadioButton" name="radioButton_14">
       <property name="geometry">
        <rect>
         <x>10</x>
@@ -440,7 +237,7 @@
       </property>
      </widget>
     </widget>
-    <widget class="QGroupBox" name="groupBox_3">
+    <widget class="QGroupBox" name="groupOther">
      <property name="geometry">
       <rect>
        <x>250</x>
@@ -452,7 +249,7 @@
      <property name="title">
       <string>Інші</string>
      </property>
-     <widget class="QRadioButton" name="radioButton_29">
+     <widget class="QRadioButton" name="radioButton_15">
       <property name="geometry">
        <rect>
         <x>10</x>
@@ -465,7 +262,7 @@
        <string>Чит.Зап.Вик</string>
       </property>
      </widget>
-     <widget class="QRadioButton" name="radioButton_30">
+     <widget class="QRadioButton" name="radioButton_16">
       <property name="geometry">
        <rect>
         <x>10</x>
@@ -478,7 +275,7 @@
        <string>Чит.Зап.</string>
       </property>
      </widget>
-     <widget class="QRadioButton" name="radioButton_31">
+     <widget class="QRadioButton" name="radioButton_17">
       <property name="geometry">
        <rect>
         <x>10</x>
@@ -491,7 +288,7 @@
        <string>Чит.Вик.</string>
       </property>
      </widget>
-     <widget class="QRadioButton" name="radioButton_32">
+     <widget class="QRadioButton" name="radioButton_18">
       <property name="geometry">
        <rect>
         <x>10</x>
@@ -504,7 +301,7 @@
        <string>Читання</string>
       </property>
      </widget>
-     <widget class="QRadioButton" name="radioButton_33">
+     <widget class="QRadioButton" name="radioButton_19">
       <property name="geometry">
        <rect>
         <x>10</x>
@@ -517,7 +314,7 @@
        <string>Зап.Вик.</string>
       </property>
      </widget>
-     <widget class="QRadioButton" name="radioButton_34">
+     <widget class="QRadioButton" name="radioButton_20">
       <property name="geometry">
        <rect>
         <x>10</x>
@@ -530,7 +327,7 @@
        <string>Запис</string>
       </property>
      </widget>
-     <widget class="QRadioButton" name="radioButton_35">
+     <widget class="QRadioButton" name="radioButton_21">
       <property name="geometry">
        <rect>
         <x>10</x>

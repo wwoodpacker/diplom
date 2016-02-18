@@ -25,7 +25,9 @@ private:
     QSplitter *splitter;
     QDirModel *model ;
     QTreeView *Treelist;
+    QString filePath;
 public slots:
+
     void MainItemsAction(QListWidgetItem *item);
     void onCustomContextMenu(const QPoint &point);
 };

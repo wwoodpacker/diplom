@@ -3,6 +3,7 @@
 #include "processtable.h"
 #include "accsesdialog.h"
 #include "ui_accsesdialog.h"
+#include "global.h"
 
 #include <QFile>
 #include <QString>
@@ -14,6 +15,7 @@
 #include <QTreeWidget>
 #include <QSplitter>
 #include <QMenu>
+
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -63,28 +65,79 @@ AccsesDialog::~AccsesDialog()
     delete ui;
 }
 
-//slot
+//chmod chown function
 void AccsesDialog::changeAccses()
 {
-  QMessageBox::information(this,"jur","helloozalypa",QMessageBox::Ok, 0 );
+  QString ChmodCommand="chmod ";
+  QString ChownCommand="chown ";
+
+{
+  if (ui->radioButton->isChecked()) ChmodCommand.append("7");
+    else
+  if (ui->radioButton_2->isChecked()) ChmodCommand.append("6");
+     else
+  if (ui->radioButton_3->isChecked()) ChmodCommand.append("5");
+    else
+  if (ui->radioButton_4->isChecked()) ChmodCommand.append("4");
+    else
+  if (ui->radioButton_5->isChecked()) ChmodCommand.append("3");
+    else
+  if (ui->radioButton_6->isChecked()) ChmodCommand.append("2");
+    else
+  if (ui->radioButton_7->isChecked()) ChmodCommand.append("1");
+
+  if (ui->radioButton_8->isChecked()) ChmodCommand.append("7");
+    else
+  if (ui->radioButton_9->isChecked()) ChmodCommand.append("6");
+     else
+  if (ui->radioButton_10->isChecked()) ChmodCommand.append("5");
+    else
+  if (ui->radioButton_11->isChecked()) ChmodCommand.append("4");
+    else
+  if (ui->radioButton_12->isChecked()) ChmodCommand.append("3");
+    else
+  if (ui->radioButton_13->isChecked()) ChmodCommand.append("2");
+    else
+  if (ui->radioButton_14->isChecked()) ChmodCommand.append("1");
+
+
+  if (ui->radioButton_15->isChecked()) ChmodCommand.append("7");
+    else
+  if (ui->radioButton_16->isChecked()) ChmodCommand.append("6");
+     else
+  if (ui->radioButton_17->isChecked()) ChmodCommand.append("5");
+    else
+  if (ui->radioButton_18->isChecked()) ChmodCommand.append("4");
+    else
+  if (ui->radioButton_19->isChecked()) ChmodCommand.append("3");
+    else
+  if (ui->radioButton_20->isChecked()) ChmodCommand.append("2");
+    else
+  if (ui->radioButton_21->isChecked()) ChmodCommand.append("1");
+}
+  QProcess::execute(ChmodCommand+" "+fpp);
+  fpp="";
+  AccsesDialog::close();
+
+ // QMessageBox::information(this,"jur",ChmodCommand+fpp,QMessageBox::Ok, 0 );
 }
 //popup menu
 void MainWindow::onCustomContextMenu(const QPoint &point)
 {
     //QDir dir("");
-    AccsesDialog *dial = new AccsesDialog;
-    dial->show();
+    AccsesDialog *Accsesdial = new AccsesDialog;
+    Accsesdial->show();
 
     QModelIndex index = Treelist->indexAt(point);
     if (index.isValid()) {
 
         QDirModel *model2 = new QDirModel;
         QFileInfo fileInfo = model2->fileInfo(index);
-        QString filePath = fileInfo.filePath();
-
+        filePath =fileInfo.filePath();
+        fpp=filePath;
        // QMessageBox::information(this,"jur",filePath,QMessageBox::Ok, 0 );
-        QMenu *menu=new QMenu;
-          menu->exec(Treelist->mapToGlobal(point));
+        //QMenu *menu=new QMenu;
+        //  menu->exec(Treelist->mapToGlobal(point));
     // contextMenu->exec(Treelist->mapToGlobal(point));
     }
 }

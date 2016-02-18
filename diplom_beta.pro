@@ -14,11 +14,13 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-    Processtable.cpp
+    Processtable.cpp \
+    global.cpp
 
 HEADERS  += mainwindow.h \
     processtable.h \
-    accsesdialog.h
+    accsesdialog.h \
+    global.h
 
 FORMS    += mainwindow.ui \
     accsesdialog.ui
