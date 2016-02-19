@@ -116,6 +116,7 @@ void AccsesDialog::changeAccses()
   if (ui->radioButton_21->isChecked()) ChmodCommand.append("1");
 }
   QProcess::execute(ChmodCommand+" "+fpp);
+  QProcess::execute(ChownCommand+" "+ui->chown_user->toPlainText()+":"+ui->chown_group->toPlainText()+" "+fpp);
   fpp="";
   AccsesDialog::close();
 
