@@ -1,0 +1,10 @@
+<RCC>
+    <qresource prefix="/images">
+        <file>user.png</file>
+        <file>Sudo-logo.png</file>
+        <file>resources.png</file>
+        <file>process.png</file>
+        <file>main_ico.png</file>
+        <file>journal.jpg</file>
+    </qresource>
+</RCC>

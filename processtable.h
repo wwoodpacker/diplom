@@ -17,11 +17,19 @@ public:
 private:
     QTableWidget * table;
     QHBoxLayout* hlayout;
-    QPushButton* button;
+    QPushButton* button_kill;
+    QPushButton* button_cont;
+    QPushButton* button_hup;
+    QPushButton* button_term;
+    QPushButton* button_stop;
     QVBoxLayout* layout;
 public slots:
     void update();
     void kill();
+    void stop();
+    void term();
+    void cont();
+    void hup();
 };
 
 #endif // PROCESSTABLE_H

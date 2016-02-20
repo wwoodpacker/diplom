@@ -10,11 +10,23 @@ ProcessTable::ProcessTable(QWidget *parent) :
     QWidget(parent)
 {
     hlayout = new QHBoxLayout;
-    button = new QPushButton("Завершить");
-    button->setToolTip("Для завершения процесса вы должны выделить его PID и нажать на кнопку \"Завершить\"");
-    connect(button,SIGNAL(clicked()),this,SLOT(kill()));
+    button_kill = new QPushButton("SIGKILL");
+    button_stop = new QPushButton("SIGSTOP");
+    button_cont = new QPushButton("SIGCONT");
+    button_hup = new QPushButton("SIGHUP");
+    button_term = new QPushButton("SIGTERM");
+    //button_kill->setToolTip("Для завершения процесса вы должны выделить его PID и нажать на кнопку \"Завершить\"");
+    connect(button_kill,SIGNAL(clicked()),this,SLOT(kill()));
+    connect(button_kill,SIGNAL(clicked()),this,SLOT(stop()));
+    connect(button_kill,SIGNAL(clicked()),this,SLOT(cont()));
+    connect(button_kill,SIGNAL(clicked()),this,SLOT(hup()));
+    connect(button_kill,SIGNAL(clicked()),this,SLOT(term()));
     hlayout->addStretch();
-    hlayout->addWidget(button);
+    hlayout->addWidget(button_kill);
+    hlayout->addWidget(button_stop);
+    hlayout->addWidget(button_cont);
+    hlayout->addWidget(button_hup);
+    hlayout->addWidget(button_term);
     layout = new QVBoxLayout;
     table = new QTableWidget;
     update();
@@ -31,7 +43,7 @@ void ProcessTable::update()
     table->setRowCount(0);
 
     QStringList list;
-    list << "Name" << "PID";
+    list << "Процес" << "PID";
     table->setHorizontalHeaderLabels(list);
     QDir * dir = new QDir("/proc");
     list = dir->entryList(QStringList("*"),QDir::AllDirs);
@@ -67,4 +79,44 @@ void ProcessTable::kill()
     QString str = item->text();
     QProcess::execute("kill -9 "+str);
     update();
+}
+
+void ProcessTable::stop()
+{
+    QList<QTableWidgetItem*> list = table->selectedItems();
+    QTableWidgetItem* item = list.value(0);
+    QString str = item->text();
+    QProcess::execute("kill -19 "+str);
+    update();
+
+}
+
+void ProcessTable::cont()
+{
+    QList<QTableWidgetItem*> list = table->selectedItems();
+    QTableWidgetItem* item = list.value(0);
+    QString str = item->text();
+    QProcess::execute("kill -18 "+str);
+    update();
+
+}
+
+void ProcessTable::term()
+{
+    QList<QTableWidgetItem*> list = table->selectedItems();
+    QTableWidgetItem* item = list.value(0);
+    QString str = item->text();
+    QProcess::execute("kill -15 "+str);
+    update();
+
+}
+
+void ProcessTable::hup()
+{
+    QList<QTableWidgetItem*> list = table->selectedItems();
+    QTableWidgetItem* item = list.value(0);
+    QString str = item->text();
+    QProcess::execute("kill -1 "+str);
+    update();
+
 }

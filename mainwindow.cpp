@@ -15,6 +15,7 @@
 #include <QTreeWidget>
 #include <QSplitter>
 #include <QMenu>
+#include <QDesktopWidget>
 
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -34,7 +35,8 @@ MainWindow::MainWindow(QWidget *parent) :
     foreach( const QString& item, LIST_ICONS  ) {
 
         QListWidgetItem *listItem = new QListWidgetItem( LIST_ITEMS[i]);
-        listItem->setIcon( QPixmap( "/root/diplom_beta/"+item) );
+        listItem->setIcon( QPixmap( ":/images/"+item) );
+        //listItem->setIcon( QPixmap( "/root/diplom_beta/"+item) );
 
         ui->list_operation->addItem( listItem );
         i++;
@@ -43,6 +45,9 @@ MainWindow::MainWindow(QWidget *parent) :
     QLabel *temp_lable =new QLabel;
     temp_lable->setText("<----- Choose item");
     ui->gridLayout->addWidget(temp_lable);
+    QListWidgetItem *listItem2 = new QListWidgetItem( LIST_ITEMS[0]);
+
+    MainItemsAction(listItem2);
     connect(ui->list_operation,SIGNAL(itemClicked(QListWidgetItem*)),this,SLOT(MainItemsAction(QListWidgetItem*)));
 }
 
@@ -56,6 +61,11 @@ AccsesDialog::AccsesDialog(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::AccsesDialog)
 {
+
+    QRect screenGeometry = QApplication::desktop()->screenGeometry();//desktopWidget->screenGeometry();
+    int x = (screenGeometry.width()-AccsesDialog::width()) / 2;
+    int y = (screenGeometry.height()-AccsesDialog::height()) / 2;
+    AccsesDialog::move(x+50,y-50);
     ui->setupUi(this);
     connect(ui->pushButton,SIGNAL(clicked(bool)),this,SLOT(changeAccses()));
 }
@@ -193,7 +203,7 @@ void MainWindow::MainItemsAction(QListWidgetItem *item)
             tableJournal->setHorizontalHeaderLabels(name_table_jurnal);
             tableJournal->resize(QSize(400,300));
             tableJournal->setColumnWidth(2,70);
-            tableJournal->setColumnWidth(3,100);
+            tableJournal->setColumnWidth(3,105);
 
             int row=0;
             QFile file("/var/log/syslog");
@@ -232,6 +242,7 @@ void MainWindow::MainItemsAction(QListWidgetItem *item)
                   }
                  QTableWidgetItem *newItem4 = new QTableWidgetItem(tmp_line);
                  tableJournal->setItem(row,3,newItem4);
+                // tableJournal->setColumnWidth();
                  //}
                  row++;
 

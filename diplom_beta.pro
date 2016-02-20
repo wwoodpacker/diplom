@@ -24,3 +24,14 @@ HEADERS  += mainwindow.h \
 
 FORMS    += mainwindow.ui \
     accsesdialog.ui
+
+RESOURCES += \
+    resources.qrc
+
+DISTFILES += \
+    Sudo-logo.png \
+    process.png \
+    journal.jpg \
+    main_ico.png \
+    user.png \
+    resources.png
