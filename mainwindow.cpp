@@ -148,23 +148,25 @@ void MainWindow::MainItemsAction(QListWidgetItem *item)
 {
 
     ProcessTable* pt= new ProcessTable;
-    QTableWidget *tableUsers = new QTableWidget(100, 6, this);
+    QTableWidget *tableUser = new QTableWidget(100, 6, this);
+     QTableWidget *tableJournal = new QTableWidget(10000,4, this);
 
     if(item->text()=="Користувачі") {
         QLayoutItem *item = ui->gridLayout->takeAt(0);
          delete item->widget();
         //tableUsers->move(QPoint(300,30));
-        QStringList name_table;
-            name_table <<"login"<<"password"<<"UID"<<"GID"<<"GECOS"<<"home"<<"shell";
-        tableUsers->setHorizontalHeaderLabels(name_table);
-        tableUsers->resize(QSize(400,300));
-        tableUsers->setColumnWidth(2,70);
-        tableUsers->setColumnWidth(3,70);
+        QStringList name_table_user;
+            name_table_user <<"login"<<"password"<<"UID"<<"GID"<<"GECOS"<<"home"<<"shell";
+        tableUser->setHorizontalHeaderLabels(name_table_user);
+        tableUser->resize(QSize(400,300));
+        tableUser->setColumnWidth(2,70);
+        tableUser->setColumnWidth(3,70);
+
 
         int row=0;
         QFile file("/etc/passwd");
         if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
-        { QMessageBox::information(this,"Error","Can't open file",QMessageBox::Ok, 0 );}
+        { QMessageBox::information(this,"Error","Can't open passwd file",QMessageBox::Ok, 0 );}
         else
         while (!file.atEnd())
         {
@@ -174,18 +176,69 @@ void MainWindow::MainItemsAction(QListWidgetItem *item)
              user=str.split(":");
              for (int j=0;j<6;j++){
                  QTableWidgetItem *newItem = new QTableWidgetItem(user[j]);
-                 tableUsers->setItem(row,j, newItem);
+                 tableUser->setItem(row,j, newItem);
              }
              row++;
 
         }
-        ui->gridLayout->addWidget(tableUsers);//tableUsers->show();
+        ui->gridLayout->addWidget(tableUser);//tableUsers->show();
 
     }
     else
     if(item->text()=="Журнал аудиту"){
-        QMessageBox::information(this,"jur","dd",QMessageBox::Ok, 0 );
+        QLayoutItem *item = ui->gridLayout->takeAt(0);
+         delete item->widget();
+        QStringList name_table_jurnal;
+            name_table_jurnal<<"Дата"<<"Хост"<<"Процес"<<"Повідомлення";
+            tableJournal->setHorizontalHeaderLabels(name_table_jurnal);
+            tableJournal->resize(QSize(400,300));
+            tableJournal->setColumnWidth(2,70);
+            tableJournal->setColumnWidth(3,100);
 
+            int row=0;
+            QFile file("/var/log/syslog");
+
+            if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
+            { QMessageBox::information(this,"Error","Can't open syslog file",QMessageBox::Ok, 0 );}
+            else
+            while (!file.atEnd())
+            {
+                 QByteArray line = file.readLine();
+                 QString str = line.data();
+                 QStringList journal_line;
+                 QString tmp_line="";
+                 journal_line=str.split(" ");
+                // for (int j=0;j<3;j++){
+                 tmp_line.append(journal_line[0]+" ");
+                 tmp_line.append(journal_line[1]+" ");
+                 tmp_line.append(journal_line[2]);
+                 QTableWidgetItem *newItem1 = new QTableWidgetItem(tmp_line);
+                 tableJournal->setItem(row,0,newItem1);
+
+                 tmp_line.clear();
+                 tmp_line.append(journal_line[3]);
+                 QTableWidgetItem *newItem2 = new QTableWidgetItem(tmp_line);
+                 tableJournal->setItem(row,1,newItem2);
+
+                 tmp_line.clear();
+                 tmp_line.append(journal_line[4]);
+                 QTableWidgetItem *newItem3 = new QTableWidgetItem(tmp_line);
+                 tableJournal->setItem(row,2,newItem3);
+
+                 tmp_line.clear();
+                 for (int j=5;j<journal_line.size();j++)
+                 {
+                    tmp_line.append(journal_line[j]);
+                  }
+                 QTableWidgetItem *newItem4 = new QTableWidgetItem(tmp_line);
+                 tableJournal->setItem(row,3,newItem4);
+                 //}
+                 row++;
+
+            }
+
+            ui->gridLayout->addWidget(tableJournal);
+            // QMessageBox::information(this,"jur","dd",QMessageBox::Ok, 0 );
     }
     else
     if(item->text()=="Доступ до ресурсів"){
