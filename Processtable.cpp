@@ -17,10 +17,10 @@ ProcessTable::ProcessTable(QWidget *parent) :
     button_term = new QPushButton("SIGTERM");
     //button_kill->setToolTip("Для завершения процесса вы должны выделить его PID и нажать на кнопку \"Завершить\"");
     connect(button_kill,SIGNAL(clicked()),this,SLOT(kill()));
-    connect(button_kill,SIGNAL(clicked()),this,SLOT(stop()));
-    connect(button_kill,SIGNAL(clicked()),this,SLOT(cont()));
-    connect(button_kill,SIGNAL(clicked()),this,SLOT(hup()));
-    connect(button_kill,SIGNAL(clicked()),this,SLOT(term()));
+    connect(button_stop,SIGNAL(clicked()),this,SLOT(stop()));
+    connect(button_cont,SIGNAL(clicked()),this,SLOT(cont()));
+    connect(button_hup,SIGNAL(clicked()),this,SLOT(hup()));
+    connect(button_term,SIGNAL(clicked()),this,SLOT(term()));
     hlayout->addStretch();
     hlayout->addWidget(button_kill);
     hlayout->addWidget(button_stop);
